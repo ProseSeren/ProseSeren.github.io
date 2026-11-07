@@ -1,0 +1,15 @@
+<script>
+(function () {
+  var language = (navigator.language || "").toLowerCase().startsWith("zh") ? "zh" : "en";
+  var theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  try {
+    var savedLanguage = localStorage.getItem("wowpage_lang");
+    var savedTheme = localStorage.getItem("astryx_academic_theme");
+    if (savedLanguage === "en" || savedLanguage === "zh") language = savedLanguage;
+    if (savedTheme === "light" || savedTheme === "dark") theme = savedTheme;
+  } catch {}
+  document.documentElement.classList.toggle("lang-zh-active", language === "zh");
+  document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
+  document.documentElement.dataset.theme = theme;
+})();
+</script>

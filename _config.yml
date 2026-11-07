@@ -2,17 +2,17 @@ locale                   : "en-US"
 title                    : "Qisong Zhang"
 title_separator          : "-"
 name                     : "Qisong Zhang"
-description              : &description "Qisong Zhang (张启淞) — Academic homepage. CV/AIGC researcher at BUPT & TeleAI. On-Policy Distillation, world generation, synthetic data engines."
-url                      : "https://kamisato520.github.io"
+description              : &description "Qisong Zhang (张启淞) — Academic homepage and CV. Multimodal generation, geometric image editing, and self-improving data systems at BUPT and China Telecom TeleAI."
+url                      : "https://proseseren.github.io"
 baseurl                  : ""
-repository               : "Kamisato520/Kamisato520.github.io"
+repository               : "ProseSeren/ProseSeren.github.io"
 
 author:
   avatar           : "avatar.jpg"
   name             : "Qisong Zhang · 张启淞"
   pronouns         :
-  bio              : "Incoming M.S. student at BUPT jointly trained with TeleAI. Focusing on On-Policy Distillation (OPD) for image and video generation models, controllable world generation, and goal-driven synthetic data engines."
-  bio_zh           : "北京邮电大学 - 中国电信 TeleAI 卓越工程师计划待入学硕士研究生。研究方向聚焦于图像与视频生成模型的 On-Policy 蒸馏 (OPD)、可控视觉世界模型以及目标驱动的合成数据闭环演化引擎。"
+  bio              : "M.S. student at BUPT jointly trained with TeleAI. Researching multimodal generation, geometric image editing, and self-improving data systems."
+  bio_zh           : "北京邮电大学与中国电信 TeleAI 联合培养硕士研究生。研究视觉生成、几何图像编辑与数据自演化系统。"
   location         : "Beijing, China"
   employer         : "BUPT · China Telecom (TeleAI)"
   uri              :
@@ -29,7 +29,7 @@ author:
   bitbucket        :
   codepen          :
   dribbble         :
-  github           : "Kamisato520"
+  github           : "ProseSeren"
   kaggle           :
   stackoverflow    :
 
@@ -127,8 +127,12 @@ exclude:
   - config
   - gulpfile.js
   - log
+  - local
   - node_modules
   - package.json
+  - preview.html
+  - _screenshots
+  - scripts
   - tmp
   - vendor
 
