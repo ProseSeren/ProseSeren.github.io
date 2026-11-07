@@ -1,5 +1,6 @@
 from html.parser import HTMLParser
 from pathlib import Path
+import re
 from urllib.parse import unquote, urlsplit
 
 
@@ -44,5 +45,9 @@ for reference in check.references:
         assert (ROOT / unquote(target.path)).is_file(), f"Missing asset: {reference}"
     elif target.fragment:
         assert unquote(target.fragment) in check.ids, f"Missing anchor: {reference}"
+css = (ROOT / "assets/css/home.css").read_text(encoding="utf-8")
+for reference in re.findall(r'url\("([^"#][^"]+)"\)', css):
+    if not urlsplit(reference).scheme:
+        assert (ROOT / "assets/css" / unquote(reference)).resolve().is_file(), f"Missing CSS asset: {reference}"
 (ROOT / "preview.html").write_text(page, encoding="utf-8")
 print(f"Generated preview.html; checked {len(check.ids)} ids and {len(check.references)} links/assets.")

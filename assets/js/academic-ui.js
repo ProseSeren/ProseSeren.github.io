@@ -848,14 +848,25 @@
       mouse.y = (e.clientY - rect.top) * dpr;
     });
 
+    hero.addEventListener("pointerleave", function () {
+      mouse.x = -9999;
+      mouse.y = -9999;
+    });
+
     hero.addEventListener("pointerdown", function (e) {
       const rect = canvas.getBoundingClientRect();
       const dpr = canvas.width / Math.max(rect.width, 1);
       spawnHit((e.clientX - rect.left) * dpr, (e.clientY - rect.top) * dpr);
     });
 
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden && !rafId && mode !== "off") {
+        rafId = requestAnimationFrame(renderLoop);
+      }
+    });
+
     function renderLoop() {
-      if (mode === "off" || !prog || !gl) {
+      if (mode === "off" || !prog || !gl || document.hidden) {
         if (gl) {
           gl.clearColor(0, 0, 0, 0);
           gl.clear(gl.COLOR_BUFFER_BIT);
@@ -890,7 +901,7 @@
       if (mode === "off") {
         canvas.style.opacity = "0";
       } else {
-        canvas.style.opacity = "0.88";
+        canvas.style.opacity = "0.5";
         if (!rafId) rafId = requestAnimationFrame(renderLoop);
       }
     }
