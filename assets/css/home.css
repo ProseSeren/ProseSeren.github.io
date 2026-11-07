@@ -6,15 +6,47 @@
    - uiverse-io/galaxy (Spotlight cards, tactile pill buttons, skeleton shimmer)
    ========================================================================== */
 
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/figtree-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/instrument-serif-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/instrument-serif-italic-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
+
 :root {
   /* Astryx Stone & Neutral Light Palette (Default Editorial Academic Mode) */
   --color-background-page: #FAF8F5;
   --color-background-surface: #FFFFFF;
   --color-background-elevated: #F3EFEA;
   --color-background-subtle: rgba(24, 24, 27, 0.035);
-  --color-background-glass: rgba(250, 248, 245, 0.82);
-  --color-bezel-outer: rgba(24, 24, 27, 0.035);
-  --color-bezel-border: rgba(24, 24, 27, 0.085);
+  --color-background-glass: rgba(250, 248, 245, 0.88);
+  --color-bezel-outer: var(--color-background-surface);
+  --color-bezel-border: rgba(24, 24, 27, 0.12);
   --color-inner-highlight: rgba(255, 255, 255, 0.9);
 
   --color-text-primary: #161618;
@@ -38,11 +70,11 @@
   --color-status-warning: #B45309;
 
   /* Shadows */
-  --shadow-ambient: 0 20px 44px -16px rgba(22, 22, 24, 0.06), 0 4px 12px -2px rgba(22, 22, 24, 0.04);
-  --shadow-elevated: 0 28px 60px -18px rgba(22, 22, 24, 0.11), 0 8px 20px -4px rgba(22, 22, 24, 0.06);
+  --shadow-ambient: 0 8px 24px -16px rgba(22, 22, 24, 0.18);
+  --shadow-elevated: 0 16px 32px -18px rgba(22, 22, 24, 0.24);
 
   /* Astryx Typography & Motion Tokens */
-  --font-sans: "Plus Jakarta Sans", "Figtree", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "Figtree", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: "Instrument Serif", "Newsreader", "Georgia", "Songti SC", serif;
   --font-mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas", monospace;
 
@@ -62,14 +94,14 @@ html[data-theme="dark"] {
   --color-background-surface: #131519;
   --color-background-elevated: #1A1D24;
   --color-background-subtle: rgba(255, 255, 255, 0.04);
-  --color-background-glass: rgba(19, 21, 25, 0.82);
-  --color-bezel-outer: rgba(255, 255, 255, 0.035);
-  --color-bezel-border: rgba(255, 255, 255, 0.09);
+  --color-background-glass: rgba(19, 21, 25, 0.88);
+  --color-bezel-outer: var(--color-background-surface);
+  --color-bezel-border: rgba(255, 255, 255, 0.12);
   --color-inner-highlight: rgba(255, 255, 255, 0.07);
 
   --color-text-primary: #F4F4F6;
   --color-text-secondary: #A1A1AA;
-  --color-text-muted: #71717A;
+  --color-text-muted: #A1A1AA;
   --color-text-on-accent: #0B0C0E;
 
   --color-border-subtle: rgba(255, 255, 255, 0.08);
@@ -288,7 +320,7 @@ html.lang-zh-active .lang-en {
    Double-Bezel (Doppelrand) Architecture & Uiverse Spotlight Card
    ========================================================================== */
 .bezel-shell {
-  padding: 6px;
+  padding: 0;
   border-radius: var(--radius-outer);
   background: var(--color-bezel-outer);
   border: 1px solid var(--color-bezel-border);
@@ -302,7 +334,8 @@ html.lang-zh-active .lang-en {
   position: relative;
   border-radius: var(--radius-inner);
   background: var(--color-background-surface);
-  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-primary);
+  border: 0;
   box-shadow: inset 0 1px 0 var(--color-inner-highlight);
   overflow: hidden;
 }
@@ -320,7 +353,7 @@ html.lang-zh-active .lang-en {
   border-radius: inherit;
   background: radial-gradient(
     460px circle at var(--mouse-x) var(--mouse-y),
-    var(--color-accent-soft),
+    rgba(194, 65, 12, 0.08),
     transparent 65%
   );
   opacity: 0;
@@ -359,7 +392,9 @@ html.lang-zh-active .lang-en {
   height: 100%;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.88;
+  opacity: 0.5;
+  mask-image: radial-gradient(ellipse 72% 76% at 50% 44%, transparent 12%, #000 92%);
+  -webkit-mask-image: radial-gradient(ellipse 72% 76% at 50% 44%, transparent 12%, #000 92%);
 }
 
 .container-wide {
@@ -481,7 +516,7 @@ html.lang-zh-active .lang-en {
 
 .astryx-btn-primary {
   background: var(--color-text-primary);
-  color: var(--color-background-page);
+  color: var(--color-background-surface);
   border: 1px solid var(--color-text-primary);
   box-shadow: var(--shadow-ambient);
 }
@@ -545,10 +580,9 @@ html.lang-zh-active .lang-en {
   align-items: center;
   gap: 8px;
   padding: 7px 13px;
-  border-radius: 14px;
+  border-radius: var(--radius-pill);
   background: var(--color-background-surface);
   border: 1px solid var(--color-border-subtle);
-  box-shadow: var(--shadow-ambient);
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--color-text-primary);
@@ -664,8 +698,8 @@ html.lang-zh-active .lang-en {
    ========================================================================== */
 .marquee-section {
   position: relative;
-  padding: 20px 0;
-  background: var(--color-background-surface);
+  padding: 14px 0;
+  background: transparent;
   border-bottom: 1px solid var(--color-border-subtle);
   overflow: hidden;
 }
@@ -682,12 +716,12 @@ html.lang-zh-active .lang-en {
   display: flex;
   width: max-content;
   gap: 12px;
-  animation: marqueeScrollLeft 42s linear infinite;
+  animation: marqueeScrollLeft 64s linear infinite;
 }
 
 .marquee-track.reverse {
   animation-name: marqueeScrollRight;
-  animation-duration: 46s;
+  animation-duration: 68s;
 }
 
 .marquee-section:hover .marquee-track {
@@ -710,7 +744,7 @@ html.lang-zh-active .lang-en {
   gap: 8px;
   padding: 6px 14px;
   border-radius: var(--radius-pill);
-  background: var(--color-background-page);
+  background: var(--color-background-surface);
   border: 1px solid var(--color-border-subtle);
   font-size: 0.81rem;
   font-weight: 500;
@@ -728,7 +762,7 @@ html.lang-zh-active .lang-en {
    Section Layout & Headers
    ========================================================================== */
 .academic-section {
-  padding: 88px 24px;
+  padding: 76px 24px;
   border-bottom: 1px solid var(--color-border-subtle);
   scroll-margin-top: 72px;
 }
@@ -737,16 +771,15 @@ html.lang-zh-active .lang-en {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  background: var(--color-accent-soft);
-  border: 1px solid var(--color-accent-border);
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
   color: var(--color-accent-primary);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   margin-bottom: 12px;
 }
 
@@ -800,7 +833,7 @@ html.lang-zh-active .lang-en {
   text-align: left;
   width: 100%;
   padding: 18px 20px;
-  border-radius: 18px;
+  border-radius: var(--radius-inner);
   background: var(--color-background-surface);
   border: 1px solid var(--color-border-subtle);
   cursor: pointer;
@@ -829,8 +862,8 @@ html.lang-zh-active .lang-en {
 
 .showcase-tab-card.is-active {
   border-color: var(--color-accent-primary);
-  box-shadow: var(--shadow-elevated), inset 3px 0 0 var(--color-accent-primary);
-  background: var(--color-background-surface);
+  box-shadow: var(--shadow-ambient);
+  background: linear-gradient(110deg, var(--color-accent-soft), var(--color-background-surface) 58%);
 }
 
 .tab-card-top {
@@ -921,7 +954,7 @@ html.lang-zh-active .lang-en {
 .stage-mode-btn.active {
   background: var(--color-background-surface);
   color: var(--color-text-primary);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-ambient);
 }
 
 /* Visual Frame + Uiverse Skeleton Shimmer */
@@ -972,7 +1005,7 @@ html.lang-zh-active .lang-en {
   min-height: 160px;
   overflow: hidden;
   border: 1px solid var(--color-border-subtle);
-  border-radius: 18px;
+  border-radius: var(--radius-inner);
   background: var(--color-background-elevated);
 }
 
@@ -1115,8 +1148,8 @@ html[data-theme="dark"] .skeleton-shimmer::after {
   gap: 5px;
   padding: 6px 12px;
   border-radius: var(--radius-pill);
-  background: var(--color-background-page);
-  border: 1px solid var(--color-border-emphasized);
+  background: var(--color-background-surface);
+  border: 1px solid var(--color-border-subtle);
   color: var(--color-text-primary);
   font-family: var(--font-mono);
   font-size: 0.76rem;
@@ -1277,6 +1310,10 @@ html[data-theme="dark"] .skeleton-shimmer::after {
   transform: scale(1.03);
 }
 
+.pub-thumb-box img[src*="showcase_"] {
+  object-fit: contain;
+}
+
 .pub-meta-top {
   display: flex;
   flex-wrap: wrap;
@@ -1337,7 +1374,7 @@ html[data-theme="dark"] .skeleton-shimmer::after {
   width: 52px;
   height: 52px;
   border-radius: 14px;
-  background: var(--color-background-elevated);
+  background: var(--color-background-surface);
   border: 1px solid var(--color-border-subtle);
   padding: 8px;
   display: flex;
@@ -1352,8 +1389,24 @@ html[data-theme="dark"] .skeleton-shimmer::after {
   object-fit: contain;
 }
 
-[data-theme="dark"] .exp-logo-box:has(img[src="images/baai-logo.png"]) {
+.exp-logo-box:has(.baai-logo) {
+  width: 96px;
   background: #fff;
+  border-color: #D4D4D8;
+  padding: 6px;
+}
+
+.exp-logo-box .baai-logo {
+  filter: brightness(0);
+}
+
+html[data-theme="dark"] .exp-logo-box:has(.baai-logo) {
+  background: var(--color-background-surface);
+  border-color: var(--color-border-subtle);
+}
+
+html[data-theme="dark"] .exp-logo-box .baai-logo {
+  filter: none;
 }
 
 .exp-period {

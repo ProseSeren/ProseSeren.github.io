@@ -203,7 +203,7 @@ redirect_from:
             <article class="bezel-shell spotlight-card stagger-item">
               <div class="bezel-core exp-card-inner">
                 <div class="exp-logo-box">
-                  <img src="images/baai-logo.png" alt="北京智源人工智能研究院（BAAI）" loading="lazy">
+                  <img src="images/baai-logo.png" class="baai-logo" alt="北京智源人工智能研究院（BAAI）" loading="lazy">
                 </div>
                 <div>
                   <div class="exp-period" data-i18n-en="2026.11–present" data-i18n-zh="2026.11–至今">2026.11–present</div>
@@ -367,10 +367,9 @@ redirect_from:
       </div>
 
       <div class="split-showcase-grid">
-        <!-- Left Pane: 5 Interactive Research Selector Cards -->
         <div class="split-left-column">
-        <div class="split-left-list" role="tablist" aria-label="Research Works">
-          <button type="button" id="tab-dataevolver" class="showcase-tab-card is-active" role="tab" aria-controls="showcase-panel" aria-selected="true" data-showcase-key="dataevolver">
+          <div class="split-left-list" role="tablist" aria-label="Research Works">
+            <button type="button" id="tab-dataevolver" class="showcase-tab-card is-active" role="tab" aria-controls="showcase-panel" aria-selected="true" data-showcase-key="dataevolver">
             <div class="tab-card-top">
               <span class="venue-pill oral">KDD '26 Wksp Oral · ICASSP '27 Submitted</span>
               <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--color-accent-primary);">1st Author* &amp; Lead</span>
@@ -379,7 +378,7 @@ redirect_from:
             <p class="tab-card-summary" data-i18n-en="One research line: goal-driven visual data generation, quality diagnosis, and failure-to-data evolution." data-i18n-zh="同一条研究主线：目标驱动的视觉数据生成、质量诊断与失败驱动的数据演化。">One research line: goal-driven visual data generation, quality diagnosis, and failure-to-data evolution.</p>
           </button>
 
-          <button type="button" id="tab-trajmcpo" class="showcase-tab-card" role="tab" aria-controls="showcase-panel" aria-selected="false" tabindex="-1" data-showcase-key="trajmcpo">
+            <button type="button" id="tab-trajmcpo" class="showcase-tab-card" role="tab" aria-controls="showcase-panel" aria-selected="false" tabindex="-1" data-showcase-key="trajmcpo">
             <div class="tab-card-top">
               <span class="venue-pill accepted">ACM MM 2026 Accepted (CCF-A)</span>
               <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--color-secondary-teal);">2nd Author</span>
@@ -388,7 +387,7 @@ redirect_from:
             <p class="tab-card-summary" data-i18n-en="Length-normalized trajectory likelihood ratios &amp; clipping for Rectified Flow RLHF; 75.0% quality preference &amp; 83.2% alignment preference on Qwen-Image / FLUX." data-i18n-zh="提出长度归一化轨迹似然比与轨迹级截断目标消除 ODE-SDE 边际失配，图像质量偏好达 75.0%、指令对齐偏好达 83.2%。">Length-normalized trajectory likelihood ratios &amp; clipping for Rectified Flow RLHF; 75.0% quality preference &amp; 83.2% alignment preference on Qwen-Image / FLUX.</p>
           </button>
 
-          <button type="button" id="tab-panel2page" class="showcase-tab-card" role="tab" aria-controls="showcase-panel" aria-selected="false" tabindex="-1" data-showcase-key="panel2page">
+            <button type="button" id="tab-panel2page" class="showcase-tab-card" role="tab" aria-controls="showcase-panel" aria-selected="false" tabindex="-1" data-showcase-key="panel2page">
             <div class="tab-card-top">
               <span class="venue-pill" data-i18n-en="Under review" data-i18n-zh="在审">Under review</span>
               <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--color-text-secondary);">2nd Author</span>
@@ -397,15 +396,15 @@ redirect_from:
             <p class="tab-card-summary" data-i18n-en="Page-Level SFT global composition priors + Omni-Panel Alignment (OPA) with zero extra inference overhead across 20,000 prompt-page pairs &amp; 320 complex benchmarks." data-i18n-zh="结合 Page-Level SFT 全局构图先验与零额外推理开销的全景分镜对齐 (OPA)，构建 20,000 组高质量数据与 320 复杂分镜基准。">Page-Level SFT global composition priors + Omni-Panel Alignment (OPA) with zero extra inference overhead across 20,000 prompt-page pairs &amp; 320 complex benchmarks.</p>
           </button>
 
-          <button type="button" id="tab-geoedit" class="showcase-tab-card" role="tab" aria-controls="showcase-panel" aria-selected="false" tabindex="-1" data-showcase-key="geoedit">
+            <button type="button" id="tab-geoedit" class="showcase-tab-card" role="tab" aria-controls="showcase-panel" aria-selected="false" tabindex="-1" data-showcase-key="geoedit">
             <div class="tab-card-top">
               <span class="venue-pill">IEEE TMM (CCF-A Under Review) · TeleStudio</span>
               <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--color-text-secondary);">2nd Author / Core R&amp;D</span>
             </div>
             <h3 class="tab-card-title" data-i18n-en="GeoEdit++: Residual-Conditioned 3D Rotation &amp; Preset LoRA" data-i18n-zh="GeoEdit++：残差条件三维旋转参考与渐进式 LoRA 系统">GeoEdit++: Residual-Conditioned 3D Rotation &amp; Preset LoRA</h3>
             <p class="tab-card-summary" data-i18n-en="Two-stage Rank-128 geometry + Rank-64 background residual fusion (+50% efficiency) and 6-stage Additive Rehearsal; 11 models deployed on TeleStudio (16× H100)." data-i18n-zh="二阶段几何（Rank=128）与自然背景残差（Rank=64）解耦训练（效率 +50%）及 6 阶段增量数据重放；11 个分角度模型在 TeleStudio 规模化上线。">Two-stage Rank-128 geometry + Rank-64 background residual fusion (+50% efficiency) and 6-stage Additive Rehearsal; 11 models deployed on TeleStudio (16× H100).</p>
-          </button>
-        </div>
+            </button>
+          </div>
           <div class="showcase-canvas-panel">
             <canvas id="showcase-canvas" class="showcase-canvas" aria-hidden="true"></canvas>
             <div class="showcase-motion-heading" aria-hidden="true">
