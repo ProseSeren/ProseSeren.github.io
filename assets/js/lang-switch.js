@@ -1,26 +1,15 @@
-/**
- * lang-switch.js — Bilingual (EN/中文) language manager for the Qisong Zhang academic homepage.
- * Adapted from the Spatialfolio i18n.js implementation (Gemini-Spatialfolio).
- *
- * Mechanism:
- *  - Rich HTML blocks: paired `.lang-en` / `.lang-zh` containers, visibility driven by
- *    the `lang-zh` class on <html> (see home.css). CSS handles the swap — no innerHTML rewriting.
- *  - Short strings: elements carrying data-i18n-en / data-i18n-zh attributes get their
- *    innerHTML swapped by apply().
- *  - State: localStorage 'wowpage_lang'; default follows the browser language.
- *  - A pre-paint inline script in _includes/head/custom.html sets the <html> class before
- *    first paint, so there is no flash of the wrong language.
- */
 (function () {
   const STORAGE_KEY = 'wowpage_lang';
   const TITLES = {
-    en: 'Qisong Zhang — CV/AIGC Researcher | BUPT & TeleAI',
-    zh: '张启淞 — CV/AIGC 研究员 | 北京邮电大学 & 中国电信 TeleAI'
+    en: 'Qisong Zhang · 张启淞',
+    zh: '张启淞 · Qisong Zhang'
   };
 
   function getInitialLang() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved === 'en' || saved === 'zh') return saved;
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === 'en' || saved === 'zh') return saved;
+    } catch {}
     return (navigator.language || '').toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en';
   }
 
@@ -44,12 +33,13 @@
     });
 
     updateToggleButtons();
+    document.dispatchEvent(new Event('languagechange'));
   }
 
   function setLang(lang) {
     if (lang !== 'en' && lang !== 'zh') return;
     currentLang = lang;
-    localStorage.setItem(STORAGE_KEY, lang);
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch {}
     apply();
   }
 
@@ -58,6 +48,11 @@
   }
 
   function updateToggleButtons() {
+    document.querySelectorAll('[data-action="toggle-language"]').forEach(function (button) {
+      button.textContent = currentLang === 'en' ? '中文' : 'EN';
+      button.setAttribute('aria-label', currentLang === 'en' ? 'Switch to Chinese' : 'Switch to English');
+      button.lang = currentLang === 'en' ? 'zh-CN' : 'en';
+    });
     const btns = document.querySelectorAll('.lang-btn');
     btns.forEach(function (btn) {
       const btnLang = btn.getAttribute('data-lang');
@@ -82,6 +77,10 @@
     });
 
     document.addEventListener('click', function (e) {
+      if (e.target.closest('[data-action="toggle-language"]')) {
+        setLang(currentLang === 'en' ? 'zh' : 'en');
+        return;
+      }
       const btn = e.target.closest('.lang-btn');
       if (btn) {
         const lang = btn.getAttribute('data-lang');
